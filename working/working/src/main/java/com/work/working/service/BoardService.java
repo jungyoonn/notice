@@ -30,6 +30,14 @@ public class BoardService {
         return result.map(data -> data.toSearchResultDto());
     }
 
+    public BoardDto.Detail findDetail(long id) throws BoardException.NotFound {
+        Optional<Board> optional = boardRepository.findById(id);
+        if(optional.isPresent()){
+            return optional.get().toDetailDto();
+        }
+        throw BoardException.NotFound.of();
+    }
+
     @Transactional
     public long save(BoardDto.Create create){
         return boardRepository.save(create.toEntity()).getId();

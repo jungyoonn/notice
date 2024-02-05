@@ -4,7 +4,9 @@ package com.work.working.controller;
 import com.work.working.common.BoardType;
 import com.work.working.common.Const;
 import com.work.working.dto.BoardDto;
+import com.work.working.exception.BoardException;
 import com.work.working.service.BoardService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -56,27 +58,28 @@ public class BoardController {
     }
 
     @RequestMapping(value = "detail")
-    public String editIndex(BoardDto.Detail detail, Model model){
+    public String detailIndex(long id, Model model) throws BoardException.NotFound {
         List<BoardDto.Types> boardTypeList = Stream.of(BoardType.values()).map(d -> BoardDto.Types.builder()
                 .name(d.getName())
                 .val(d.toString())
                 .build()).collect(Collectors.toList());
         model.addAttribute("boardTypeList", boardTypeList);
 
+        BoardDto.Detail detail = boardService.findDetail(id);
         model.addAttribute("detailDto", detail);
 
         return "board/edit";
     }
 
     @RequestMapping(value = "save")
-    public String saveIndex(){
-
+    public String saveIndex(@Valid BoardDto.Create create){
+        boardService.save(create);
         return "board/main";
     }
 
     @RequestMapping(value = "update")
-    public String updateIndex(){
-
+    public String updateIndex(@Valid BoardDto.Update update){
+        boardService.update(update);
         return "board/main";
     }
 }

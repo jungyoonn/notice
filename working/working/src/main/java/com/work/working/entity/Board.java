@@ -35,6 +35,12 @@ public class Board {
     @Comment("타입")
     private BoardType type;
 
+    @Comment("작성자")
+    private String name;
+
+    @Comment("비밀번호")
+    private String password;
+
     @Comment("생성날짜")
     private LocalDateTime createdDate;
 
@@ -86,6 +92,8 @@ public class Board {
                 .title(this.title)
                 .contents(this.contents)
                 .type(this.type)
+                .name(this.name)
+                .password(this.password)
                 .createdBy(this.getCreatedBy())
                 .modifiedBy(this.getModifiedBy())
                 .createdDate(this.getCreatedDate())
@@ -99,6 +107,8 @@ public class Board {
                 .title(this.title)
                 .contents(this.contents)
                 .type(this.type)
+                .name(this.name)
+                .password(this.password)
                 .createdBy(this.getCreatedBy())
                 .modifiedBy(this.getModifiedBy())
                 .createdDate(this.getCreatedDate())

@@ -14,7 +14,7 @@
     </head>
     <body>
     <div class="page-inner background" style="background-image: url('/resources/img/bg_01.png'); height: 20rem;">
-
+        <img src="/resources/img/bg_01.png" style="text-align: center; height: 15rem;" alt=""/>
     </div>
         <div class="section">
             <div class="container">

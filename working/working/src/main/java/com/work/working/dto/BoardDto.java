@@ -27,6 +27,10 @@ public class BoardDto {
 
         protected BoardType type;
 
+        protected String name;
+
+        protected String password;
+
         protected LocalDateTime createdDate;
 
         protected String createdBy;
@@ -48,6 +52,8 @@ public class BoardDto {
                     .title(this.title)
                     .contents(this.contents)
                     .type(this.type)
+                    .name(this.name)
+                    .password(this.password)
                     .build();
         }
     }
