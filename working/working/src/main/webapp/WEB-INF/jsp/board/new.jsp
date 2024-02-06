@@ -15,8 +15,6 @@
                     var name = document.getElementById("name").value;
                     var password = document.getElementById("password").value;
 
-                    console.log(title, name, password);
-
                     if(title == "" && name == "" && password == "") {
                         var requiredAlertTitle = document.querySelector('#title + .required-alert');
                         var requiredAlertName = document.querySelector('#name + .required-alert');
@@ -101,7 +99,6 @@
                     }
 
                     document.getElementById("popupContainer").style.display = 'block';
-
                 });
 
                 document.querySelector('input[type="text"]').addEventListener('oninput', function (){
@@ -124,32 +121,11 @@
             });
 
             function closePopup(){
-                document.querySelector('.close-btn').style.display = 'none';
+                document.getElementById("popupContainer").style.display = 'none';
             }
-
-            /*function checkLength() {
-                const inputElementName = document.getElementById('name');
-                const inputValueName = inputElementName.value;
-
-                const inputElementTitle = document.getElementById('title');
-                const inputValueTitle = inputElementTitle.value;
-
-                if(inputValueTitle.length > 20) {
-                    inputElementTitle.value = inputValueTitle.substring(0, 20);
-                    alert('제목은 20자리를 넘길 수 없습니다.');
-                }
-
-                if (inputValueName.length > 10) {
-                    inputElementName.value = inputValueName.substring(0, 10);
-                    alert('이름은 10자리를 넘길수 없습니다.');
-                }
-            }*/
         </script>
     </head>
     <body>
-    <div class="page-inner background" style="background-image: url('/resources/img/bg_01.png'); height: 20rem;">
-
-    </div>
     <div class="section">
         <div class="container">
             <div class="board-wrap">

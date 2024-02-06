@@ -16,6 +16,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -72,14 +73,23 @@ public class BoardController {
     }
 
     @RequestMapping(value = "save")
-    public String saveIndex(@Valid BoardDto.Create create){
+    public String saveIndex(@Valid BoardDto.Create create, Model model){
         boardService.save(create);
+        model.addAttribute("saveOk", true);
         return "board/main";
     }
 
     @RequestMapping(value = "update")
-    public String updateIndex(@Valid BoardDto.Update update){
+    public String updateIndex(@Valid BoardDto.Update update, Model model){
         boardService.update(update);
+        model.addAttribute("updateOk", true);
         return "board/main";
+    }
+
+    @RequestMapping(value = "delete")
+    public String deleteIndex( long id, Model model) throws BoardException.NotFound {
+        boardService.delete(id);
+        model.addAttribute("deleteOk", true);
+        return "Board/main";
     }
 }

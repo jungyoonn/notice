@@ -9,7 +9,14 @@
         <link rel="stylesheet" type="text/css" href="resources/css/css.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
         <script>
-
+            document.addEventListener("DOMContentLoaded", () => {
+                if("${saveOk}" == true){
+                    location.href = "/work/main";
+                }
+                if("${deleteOk}" == true){
+                    location.href = "/work/main";
+                }
+            });
         </script>
     </head>
     <body>
@@ -21,11 +28,11 @@
                 <div class="board-wrap">
                     <div class="board-title">
                         <strong>공지사항</strong>
-                        <form class="searchForm" name="searchForm" method="post" action="/work/main">
-                            <select name="boardType" onchange="this.form.submit()">
+                        <form class="searchForm" name="searchForm" method="get" action="/work/main">
+                            <select name="type" id="type" onchange="this.form.submit()">
                                 <option value="">전체</option>
                                 <c:forEach var="boardTypes" items="${boardTypeList}" varStatus="status">
-                                    <option value="${boardTypes.val}">${boardTypes.name}</option>
+                                    <option value="${boardTypes.val}" <c:if test="${search.type == boardTypes.val}"> selected</c:if>>${boardTypes.name}</option>
                                 </c:forEach>
                             </select>
                         </form>
@@ -45,7 +52,7 @@
                             <div>
                                 <div class="num"><c:out value="${page.totalElements - (page.size * page.number) - status.index}"/></div>
                                 <div class="types"><c:out value="${data.type.name}"/></div>
-                                <div class="title"><c:out value="${data.title}"/></div>
+                                <div class="title"><a href="/work/detail?id=${data.id}"><c:out value="${data.title}"/></a></div>
                                 <div class="name"><c:out value="${data.name}"/></div>
                                 <div class="date">
                                     <fmt:parseDate value="${data.createdDate}" var="data_createdDate" pattern="yyyy-MM-dd'T'HH:mm" />

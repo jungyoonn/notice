@@ -9,13 +9,226 @@
         <link rel="stylesheet" type="text/css" href="resources/css/css.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
         <script>
+            let submitEvent = "";
 
+            document.addEventListener("DOMContentLoaded", () => {
+                if("${updateOk}" == true){
+                    confirmPopup("수정되었습니다.");
+                    location.href = "/work/main";
+                }
+                if("${deleteOk}" == true){
+                    location.href = "/work/main";
+                }
+
+                document.getElementById("update").addEventListener('click', function (){
+                    var title = document.getElementById("title").value;
+                    var name = document.getElementById("name").value;
+                    var password = document.getElementById("password").value;
+
+                    if(title == "" && name == "" && password == "") {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertTitle.style.display = 'block';
+                        requiredAlertName.style.display = 'block';
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertTitle.style.display = 'none';
+                        requiredAlertName.style.display = 'none';
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    if (title == "" && name == "") {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        requiredAlertTitle.style.display = 'block';
+                        requiredAlertName.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        requiredAlertTitle.style.display = 'none';
+                        requiredAlertName.style.display = 'none';
+                    }
+
+                    if(title == "" && password == "") {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertTitle.style.display = 'block';
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertTitle.style.display = 'none';
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    if(name == "" && password == ""){
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertName.style.display = 'block';
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertName.style.display = 'none';
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    if(title == ""){
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        requiredAlertTitle.style.display = "block";
+                        return;
+                    } else {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        requiredAlertTitle.style.display = "none";
+                    }
+
+                    if(name == ""){
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        requiredAlertName.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        requiredAlertName.style.display = 'none';
+                    }
+
+                    if(password == ""){
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    let pwd = document.getElementById("password").value;
+                    let inputPwd = document.getElementById("password").dataset.pw;
+
+                    if(pwd != inputPwd){
+                        var requiredAlertPassword = document.querySelector('#password + .password-alert');
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertPassword = document.querySelector('#password + .password-alert');
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    submitEvent = "update";
+                    showPopup("수정하시겠습니까?");
+
+                });
+
+                document.getElementById("delete").addEventListener('click', function (){
+                    let pwd = document.getElementById("password").value;
+                    let inputPwd = document.getElementById("password").dataset.pw;
+
+                    if(pwd != inputPwd){
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    submitEvent = "delete";
+                    showPopup("삭제하시겠습니까?");
+                });
+
+                document.querySelector('input[type="text"]').addEventListener('oninput', function (){
+                    const inputElementName = document.getElementById('name');
+                    const inputValueName = inputElementName.value;
+
+                    const inputElementTitle = document.getElementById('title');
+                    const inputValueTitle = inputElementTitle.value;
+
+                    if(inputValueTitle.length > 20) {
+                        inputElementTitle.value = inputValueTitle.substring(0, 20);
+                        alert('제목은 20자리를 넘길 수 없습니다.');
+                    }
+
+                    if (inputValueName.length > 10) {
+                        inputElementName.value = inputValueName.substring(0, 10);
+                        alert('이름은 10자리를 넘길수 없습니다.');
+                    }
+                });
+
+
+            });
+
+            function closePopup(){
+                document.getElementById("popupContainer").style.display = 'none';
+            }
+
+            function showPopup(message){
+                let div = document.createElement("div");
+                div.innerHTML = `
+                <div id="popupContainer" class="popup-container">
+                    <div class="popup">
+                        <span id="closePopup" onclick="closePopup()" class="close-btn">×</span>
+                        <p>`
+                         + message +
+                    `</p>
+                            <div class="btn-wrap">
+                                <button type="button" id="popupSubmit" onClick="updateOrDelete()" class="btn-on">확인</button>
+                                <button onclick="closePopup()">취소</button>
+                            </div>
+                        </div>
+                </div>
+                `
+                div.style.display = 'flex';
+                div.style.zIndex = 2000;
+                document.body.appendChild(div);
+                document.body.style.overflow = 'hidden';
+                document.getElementById("popupContainer").style.display = 'block';
+            }
+
+            function confirmPopup(message){
+                let div = document.createElement("div");
+                div.innerHTML = `
+                <div id="popupContainer" class="popup-container">
+                    <div class="popup">
+                        <span id="closePopup" onclick="closePopup()" class="close-btn">×</span>
+                        <p>`
+                    + message +
+                    `</p>
+                            <div class="btn-wrap">
+                                <a href="/work/main"><button type="button" class="btn-on">확인</button></a>
+                                <button onclick="closePopup()">취소</button>
+                            </div>
+                        </div>
+                </div>
+                `
+                div.style.display = 'flex';
+                div.style.zIndex = 2000;
+                document.body.appendChild(div);
+                document.body.style.overflow = 'hidden';
+                document.getElementById("popupContainer").style.display = 'block';
+            }
+
+            window.onload=function(){}
+            function updateOrDelete(){
+                if(submitEvent == "delete"){
+                    const delForm = document.getElementById("delNotification");
+                    console.log(delForm);
+                    delForm.submit();
+                } else if(submitEvent == "update"){
+                    const form = document.getElementById("updateNotification");
+                    form.submit();
+                } else if(submitEvent == "fail"){
+                    history.reload();
+                }
+            }
         </script>
     </head>
     <body>
-        <div class="page-inner background" style="background-image: url('/resources/img/bg_01.png'); height: 20rem;">
-
-        </div>
         <div class="section">
             <div class="container">
                 <div class="board-wrap">
@@ -25,42 +238,63 @@
                     </div>
                 </div>
                 <div class="board-write-wrap">
-                    <div class="board-write">
-                        <div class="title">
-                            <dl>
-                                <dt>제목</dt>
-                                <dd><input type="text" placeholder="제목을 입력해 주세요"/></dd>
-                            </dl>
-                            <dl>
-                                <dt>말머리</dt>
-                                <dd>
-                                    <select class="">
-                                        <c:forEach var="boardTypes" items="${boardTypeList}" varStatus="status">
-                                            <option value="${boardTypes.val}">${boardTypes.name}</option>
-                                        </c:forEach>
-                                    </select>
-                                </dd>
-                            </dl>
-                        </div>
-                        <div class="info">
-                            <dl>
-                                <dt>작성자</dt>
-                                <dd><input type="text" placeholder="작성자"/></dd>
-                            </dl>
-                            <dl>
-                                <dt>비밀번호</dt>
-                                <dd><input type="password" placeholder="비밀번호를 입력하세요"/></dd>
-                            </dl>
-                        </div>
-                        <div class="cont">
-                            <textarea placeholder="내용을 입력해 주세요"></textarea>
-                        </div>
-                    </div>
                     <div class="btn-wrap">
-                        <a href="/work/main" class="on">수정</a>
-                        <a href="/work/main">취소</a>
-                        <a href="#" style="background: #777777">삭제</a>
+                        <form name="delNotification" id="delNotification" method="post" action="/work/delete">
+                            <input type="text" id="id" name="id" hidden="hidden" value="<c:out value="${detailDto.id}"/>"/>
+                            <input type="text" name="title" hidden="hidden" value="<c:out value="${detailDto.title}"/>"/>
+                            <input type="text" name="name" hidden="hidden" value="<c:out value="${detailDto.name}"/>"/>
+                            <input type="text" name="password" hidden="hidden" value="<c:out value="${detailDto.password}"/>"/>
+                            <input type="text" name="contents" hidden="hidden" value="<c:out value="${detailDto.contents}"/>"/>
+                            <button type="button" id="delete" style="background: #777777">삭제</button>
+                        </form>
                     </div>
+                    <form id="updateNotification" method="post" action="/work/update">
+                        <div class="board-write">
+                            <div class="title">
+                                <dl>
+                                    <dt>제목</dt>
+                                    <dd>
+                                        <input type="text" maxlength="20" name="title" id="title" value="<c:out value="${detailDto.title}"/>"/>
+                                        <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>말머리</dt>
+                                    <dd>
+                                        <select name="type">
+                                            <c:forEach var="boardTypes" items="${boardTypeList}" varStatus="status">
+                                                <option value="${boardTypes.val}" <c:if test="${detailDto.type == boardTypes.val}"> selected</c:if>>${boardTypes.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="info">
+                                <dl>
+                                    <dt>작성자</dt>
+                                    <dd>
+                                        <input type="text" maxlength="10" name="name" id="name" value="<c:out value="${detailDto.name}"/>"/>
+                                        <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>비밀번호</dt>
+                                    <dd>
+                                        <input type="password" name="password" id="password" data-pw="${detailDto.password}" placeholder="비밀번호를 입력하세요"/>
+                                        <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
+                                        <p class="password-alert" style="margin: 0; color: red; display: none;">비밀번호를 확인해주세요.</p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="cont">
+                                <textarea><c:out value="${detailDto.contents}"/></textarea>
+                            </div>
+                        </div>
+                        <div class="btn-wrap">
+                            <button type="button" id="update" class="btn-on">수정</button>
+                            <a href="/work/main">취소</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
