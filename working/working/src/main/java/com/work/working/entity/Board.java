@@ -41,6 +41,9 @@ public class Board {
     @Comment("비밀번호")
     private String password;
 
+    @Comment("조회수")
+    private long count;
+
     @Comment("생성날짜")
     private LocalDateTime createdDate;
 
@@ -94,6 +97,7 @@ public class Board {
                 .type(this.type)
                 .name(this.name)
                 .password(this.password)
+                .count(this.count)
                 .createdBy(this.getCreatedBy())
                 .modifiedBy(this.getModifiedBy())
                 .createdDate(this.getCreatedDate())
@@ -109,6 +113,7 @@ public class Board {
                 .type(this.type)
                 .name(this.name)
                 .password(this.password)
+                .count(this.count)
                 .createdBy(this.getCreatedBy())
                 .modifiedBy(this.getModifiedBy())
                 .createdDate(this.getCreatedDate())

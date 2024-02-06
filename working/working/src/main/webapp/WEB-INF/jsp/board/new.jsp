@@ -10,67 +10,129 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
         <script type="module">
             document.addEventListener("DOMContentLoaded", () => {
+                document.getElementById("submit").addEventListener('click', function (){
+                    var title = document.getElementById("title").value;
+                    var name = document.getElementById("name").value;
+                    var password = document.getElementById("password").value;
 
+                    console.log(title, name, password);
+
+                    if(title == "" && name == "" && password == "") {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertTitle.style.display = 'block';
+                        requiredAlertName.style.display = 'block';
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertTitle.style.display = 'none';
+                        requiredAlertName.style.display = 'none';
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    if (title == "" && name == "") {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        requiredAlertTitle.style.display = 'block';
+                        requiredAlertName.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        requiredAlertTitle.style.display = 'none';
+                        requiredAlertName.style.display = 'none';
+                    }
+
+                    if(title == "" && password == "") {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertTitle.style.display = 'block';
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertTitle.style.display = 'none';
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    if(name == "" && password == ""){
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertName.style.display = 'block';
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertName.style.display = 'none';
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    if(title == ""){
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        requiredAlertTitle.style.display = "block";
+                        return;
+                    } else {
+                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
+                        requiredAlertTitle.style.display = "none";
+                    }
+
+                    if(name == ""){
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        requiredAlertName.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertName = document.querySelector('#name + .required-alert');
+                        requiredAlertName.style.display = 'none';
+                    }
+
+                    if(password == ""){
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertPassword.style.display = 'block';
+                        return;
+                    } else {
+                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
+                        requiredAlertPassword.style.display = 'none';
+                    }
+
+                    document.getElementById("popupContainer").style.display = 'block';
+
+                });
+
+                document.querySelector('input[type="text"]').addEventListener('oninput', function (){
+                    const inputElementName = document.getElementById('name');
+                    const inputValueName = inputElementName.value;
+
+                    const inputElementTitle = document.getElementById('title');
+                    const inputValueTitle = inputElementTitle.value;
+
+                    if(inputValueTitle.length > 20) {
+                        inputElementTitle.value = inputValueTitle.substring(0, 20);
+                        alert('제목은 20자리를 넘길 수 없습니다.');
+                    }
+
+                    if (inputValueName.length > 10) {
+                        inputElementName.value = inputValueName.substring(0, 10);
+                        alert('이름은 10자리를 넘길수 없습니다.');
+                    }
+                });
             });
 
-            function save(){
-                var title = document.getElementById("title").value;
-                var name = document.getElementById("name").value;
-                var password = document.getElementById("password").value;
-
-                var requiredAlertTitle = document.querySelector('#title + .required-alert');
-                var requiredAlertName = document.querySelector('#name + .required-alert');
-                var requiredAlertPassword = document.querySelector('#password + .required-alert');
-
-
-                if(title == "" && name == "" && password == "") {
-                    requiredAlertTitle.style.display = 'block';
-                    requiredAlertName.style.display = 'block';
-                    requiredAlertPassword.style.display = 'block';
-                    return;
-                } else {
-                    requiredAlertTitle.style.display = 'none';
-                    requiredAlertName.style.display = 'none';
-                    requiredAlertPassword.style.display = 'none';
-                }
-
-                if (title == "" && name == "") {
-                    requiredAlertTitle.style.display = 'block';
-                    requiredAlertName.style.display = 'block';
-                    return;
-                } else {
-                    requiredAlertTitle.style.display = 'none';
-                    requiredAlertName.style.display = 'none';
-                }
-
-                if(title == "" && password == "") {
-                    requiredAlertTitle.style.display = 'block';
-                    requiredAlertPassword.style.display = 'block';
-                    return;
-                } else {
-                    requiredAlertTitle.style.display = 'none';
-                    requiredAlertPassword.style.display = 'none';
-                }
-
-                if(name == "" && password == ""){
-                    requiredAlertName.style.display = 'block';
-                    requiredAlertPassword.style.display = 'block';
-                    return;
-                } else {
-                    requiredAlertName.style.display = 'none';
-                    requiredAlertPassword.style.display = 'none';
-                }
-
-                const formSubmit = document.getElementById("newNotification");
-                formSubmit.submit();
+            function closePopup(){
+                document.querySelector('.close-btn').style.display = 'none';
             }
 
-            function checkInputLength() {
-                var inputElementName = document.getElementById('name');
-                var inputValueName = inputElementName.value;
+            /*function checkLength() {
+                const inputElementName = document.getElementById('name');
+                const inputValueName = inputElementName.value;
 
-                var inputElementTitle = document.getElementById('title');
-                var inputValueTitle = inputElementTitle.value;
+                const inputElementTitle = document.getElementById('title');
+                const inputValueTitle = inputElementTitle.value;
 
                 if(inputValueTitle.length > 20) {
                     inputElementTitle.value = inputValueTitle.substring(0, 20);
@@ -81,7 +143,7 @@
                     inputElementName.value = inputValueName.substring(0, 10);
                     alert('이름은 10자리를 넘길수 없습니다.');
                 }
-            }
+            }*/
         </script>
     </head>
     <body>
@@ -97,13 +159,13 @@
                 </div>
             </div>
             <div class="board-write-wrap">
-                <form id="newNotification" name="newNotification" method="post" oninput="checkInputLength()" action="/work/save">
+                <form id="newNotification" name="newNotification" method="post" action="/work/save">
                     <div class="board-write">
                         <div class="title">
                             <dl>
                                 <dt>제목</dt>
                                 <dd>
-                                    <input type="text" name="title" id="title" placeholder="제목을 입력해 주세요"/>
+                                    <input type="text" name="title" id="title" maxlength="20" placeholder="제목을 입력해 주세요"/>
                                     <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
                                 </dd>
                             </dl>
@@ -122,7 +184,7 @@
                             <dl>
                                 <dt>작성자</dt>
                                 <dd>
-                                    <input type="text" name="name" id="name" placeholder="작성자"/>
+                                    <input type="text" name="name" id="name" maxlength="10" placeholder="작성자"/>
                                     <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
                                 </dd>
                             </dl>
@@ -139,8 +201,18 @@
                         </div>
                     </div>
                     <div class="btn-wrap">
-                        <button onclick="save()" class="btn-on">등록</button>
+                        <button type="button" id="submit" class="btn-on">등록</button>
                         <a href="/work/main">취소</a>
+                    </div>
+                    <div id="popupContainer" class="popup-container">
+                        <div class="popup">
+                            <span id="closePopup" onclick="closePopup()" class="close-btn">×</span>
+                            <p>저장하시겠습니까?</p>
+                            <div class="btn-wrap">
+                                <button type="submit" class="btn-on">확인</button>
+                                <button onclick="closePopup()">취소</button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

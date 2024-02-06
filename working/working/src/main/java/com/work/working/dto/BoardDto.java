@@ -31,6 +31,8 @@ public class BoardDto {
 
         protected String password;
 
+        protected long count;
+
         protected LocalDateTime createdDate;
 
         protected String createdBy;
@@ -54,6 +56,7 @@ public class BoardDto {
                     .type(this.type)
                     .name(this.name)
                     .password(this.password)
+                    .count(this.count)
                     .build();
         }
     }
