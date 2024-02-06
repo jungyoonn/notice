@@ -6,141 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>공지사항</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="resources/css/css.css">
+        <link rel="stylesheet" type="text/css" href="resources/resource/css.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+        <script type="module" src="resources/resource/board.js"></script>
         <script>
             let submitEvent = "";
 
             document.addEventListener("DOMContentLoaded", () => {
-                if("${updateOk}" == true){
+                /*if("${updateOk}" == true){
                     confirmPopup("수정되었습니다.");
                     location.href = "/work/main";
                 }
                 if("${deleteOk}" == true){
                     location.href = "/work/main";
-                }
-
-                document.getElementById("update").addEventListener('click', function (){
-                    var title = document.getElementById("title").value;
-                    var name = document.getElementById("name").value;
-                    var password = document.getElementById("password").value;
-
-                    if(title == "" && name == "" && password == "") {
-                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
-                        var requiredAlertName = document.querySelector('#name + .required-alert');
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertTitle.style.display = 'block';
-                        requiredAlertName.style.display = 'block';
-                        requiredAlertPassword.style.display = 'block';
-                        return;
-                    } else {
-                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
-                        var requiredAlertName = document.querySelector('#name + .required-alert');
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertTitle.style.display = 'none';
-                        requiredAlertName.style.display = 'none';
-                        requiredAlertPassword.style.display = 'none';
-                    }
-
-                    if (title == "" && name == "") {
-                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
-                        var requiredAlertName = document.querySelector('#name + .required-alert');
-                        requiredAlertTitle.style.display = 'block';
-                        requiredAlertName.style.display = 'block';
-                        return;
-                    } else {
-                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
-                        var requiredAlertName = document.querySelector('#name + .required-alert');
-                        requiredAlertTitle.style.display = 'none';
-                        requiredAlertName.style.display = 'none';
-                    }
-
-                    if(title == "" && password == "") {
-                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertTitle.style.display = 'block';
-                        requiredAlertPassword.style.display = 'block';
-                        return;
-                    } else {
-                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertTitle.style.display = 'none';
-                        requiredAlertPassword.style.display = 'none';
-                    }
-
-                    if(name == "" && password == ""){
-                        var requiredAlertName = document.querySelector('#name + .required-alert');
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertName.style.display = 'block';
-                        requiredAlertPassword.style.display = 'block';
-                        return;
-                    } else {
-                        var requiredAlertName = document.querySelector('#name + .required-alert');
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertName.style.display = 'none';
-                        requiredAlertPassword.style.display = 'none';
-                    }
-
-                    if(title == ""){
-                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
-                        requiredAlertTitle.style.display = "block";
-                        return;
-                    } else {
-                        var requiredAlertTitle = document.querySelector('#title + .required-alert');
-                        requiredAlertTitle.style.display = "none";
-                    }
-
-                    if(name == ""){
-                        var requiredAlertName = document.querySelector('#name + .required-alert');
-                        requiredAlertName.style.display = 'block';
-                        return;
-                    } else {
-                        var requiredAlertName = document.querySelector('#name + .required-alert');
-                        requiredAlertName.style.display = 'none';
-                    }
-
-                    if(password == ""){
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertPassword.style.display = 'block';
-                        return;
-                    } else {
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertPassword.style.display = 'none';
-                    }
-
-                    let pwd = document.getElementById("password").value;
-                    let inputPwd = document.getElementById("password").dataset.pw;
-
-                    if(pwd != inputPwd){
-                        var requiredAlertPassword = document.querySelector('#password + .password-alert');
-                        requiredAlertPassword.style.display = 'block';
-                        return;
-                    } else {
-                        var requiredAlertPassword = document.querySelector('#password + .password-alert');
-                        requiredAlertPassword.style.display = 'none';
-                    }
-
-                    submitEvent = "update";
-                    showPopup("수정하시겠습니까?");
-
-                });
-
-                document.getElementById("delete").addEventListener('click', function (){
-                    let pwd = document.getElementById("password").value;
-                    let inputPwd = document.getElementById("password").dataset.pw;
-
-                    if(pwd != inputPwd){
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertPassword.style.display = 'block';
-                        return;
-                    } else {
-                        var requiredAlertPassword = document.querySelector('#password + .required-alert');
-                        requiredAlertPassword.style.display = 'none';
-                    }
-
-                    submitEvent = "delete";
-                    showPopup("삭제하시겠습니까?");
-                });
+                }*/
 
                 document.querySelector('input[type="text"]').addEventListener('oninput', function (){
                     const inputElementName = document.getElementById('name');
@@ -159,8 +38,6 @@
                         alert('이름은 10자리를 넘길수 없습니다.');
                     }
                 });
-
-
             });
 
             function closePopup(){
@@ -213,7 +90,7 @@
                 document.getElementById("popupContainer").style.display = 'block';
             }
 
-            window.onload=function(){}
+            /*window.onload=function(){}
             function updateOrDelete(){
                 if(submitEvent == "delete"){
                     const delForm = document.getElementById("delNotification");
@@ -225,7 +102,7 @@
                 } else if(submitEvent == "fail"){
                     history.reload();
                 }
-            }
+            }*/
         </script>
     </head>
     <body>
@@ -239,14 +116,14 @@
                 </div>
                 <div class="board-write-wrap">
                     <div class="btn-wrap">
-                        <form name="delNotification" id="delNotification" method="post" action="/work/delete">
+                        <%--<form name="delNotification" id="delNotification" method="post" action="/work/delete">
                             <input type="text" id="id" name="id" hidden="hidden" value="<c:out value="${detailDto.id}"/>"/>
                             <input type="text" name="title" hidden="hidden" value="<c:out value="${detailDto.title}"/>"/>
                             <input type="text" name="name" hidden="hidden" value="<c:out value="${detailDto.name}"/>"/>
                             <input type="text" name="password" hidden="hidden" value="<c:out value="${detailDto.password}"/>"/>
                             <input type="text" name="contents" hidden="hidden" value="<c:out value="${detailDto.contents}"/>"/>
                             <button type="button" id="delete" style="background: #777777">삭제</button>
-                        </form>
+                        </form>--%>
                     </div>
                     <form id="updateNotification" method="post" action="/work/update">
                         <div class="board-write">
@@ -291,8 +168,9 @@
                             </div>
                         </div>
                         <div class="btn-wrap">
-                            <button type="button" id="update" class="btn-on">수정</button>
+                            <button type="button" id="update" onclick="boardApp.update(event, ${detailDto.id})" class="btn-on">수정</button>
                             <a href="/work/main">취소</a>
+                            <button type="button" id="delete" onclick="boardApp.delete(event, ${detailDto.id})" style="background: #777777">삭제</button>
                         </div>
                     </form>
                 </div>

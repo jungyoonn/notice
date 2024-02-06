@@ -1,17 +1,5 @@
-<script>
-    function goPage(page){
-        if(page){
-            document.querySelector("#page").value = page;
-        }
-
-        window.location.hash = "anchor";
-
-        document.querySelector("#searchForm").submit();
-    }
-</script>
-
 <c:if test="${page.totalPages > 0}">
-    <div class="board-page">
+    <div class="wrap-page-num">
         <div class="board-page-num">
             <c:if test="${!page.first}">
                 <a class="btn first" onClick="goPage('0')"><<</a>
