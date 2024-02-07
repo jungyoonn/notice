@@ -166,8 +166,8 @@ export class Message extends Crypto{
                         <span id="closePopup" onclick=${this.refFunc(this.cancel)} class="close-btn">×</span>
                         <p>${message.map(d => (d + '<br>')).join('')}</p>
                         <div class="btn-wrap">
-                            <button onclick=${this.refFunc(this.cancel)} class="btn-on">확인</button>
-                            <button onclick=${this.refFunc(this.cancel)}>취소</button>
+                            <button onclick=${this.refFunc(this.ok)} class="btn-on">확인</button>
+                            <button onclick=${this.refFunc(this.cancel)}>닫기</button>
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@ export class Message extends Crypto{
                         <span id="closePopup" onclick=${this.refFunc(this.cancel)} class="close-btn">×</span>
                         <p>${message}</p>
                         <div class="btn-wrap">
-                            <button type="submit" class="btn-on">확인</button>
+                            <button onclick=${this.refFunc(this.ok)} class="btn-on">확인</button>
                             <button onclick=${this.refFunc(this.cancel)}>취소</button>
                         </div>
                     </div>

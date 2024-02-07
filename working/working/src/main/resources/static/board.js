@@ -14,7 +14,7 @@ class BoardData extends BaseData {
 
     static of(id, target) {
         let title = target.querySelector("input[name='title']").value;
-        let contents = target.querySelector("input[name='contents']").value;
+        let contents = target.querySelector("textarea[name='contents']").value;
         let name = target.querySelector("input[name='name']").value;
         let type = target.querySelector("select[name='type']").value;
         let password = target.querySelector("input[name='password']").value;
@@ -130,9 +130,14 @@ export class Board extends App {
              })
             .then(() => Message.alert("수정되었습니다."))
             .then(() => goPage())
-            .catch((error) => {
+            /*.catch((error) => {
                 console.log(error);
                 error.then(e => Message.alert(Object.values(e.errors)));
+            });*/
+            ;(async () => {
+                throw new Error('error')
+            })().catch((error) => {
+                console.log(error)
             });
         })
     }
@@ -162,7 +167,8 @@ export class Board extends App {
             .then(() => Message.alert("삭제되었습니다."))
             .then(() => goPage(0))
             .catch((error) => {
-                error.then(e => Message.alert(Object.values(e.errors)))
+                //error.then(e => Message.alert(Object.values(e.errors)))
+                console.log(error)
             });
     }
 }

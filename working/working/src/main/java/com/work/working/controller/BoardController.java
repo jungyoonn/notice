@@ -78,18 +78,4 @@ public class BoardController {
         model.addAttribute("saveOk", true);
         return "board/main";
     }
-
-    @RequestMapping(value = "update")
-    public String updateIndex(@Valid BoardDto.Update update, Model model){
-        boardService.update(update);
-        model.addAttribute("updateOk", true);
-        return "board/main";
-    }
-
-    @RequestMapping(value = "delete")
-    public String deleteIndex( long id, Model model) throws BoardException.NotFound {
-        boardService.delete(id);
-        model.addAttribute("deleteOk", true);
-        return "Board/main";
-    }
 }

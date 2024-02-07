@@ -11,12 +11,7 @@
         <script type="module" src="resources/resource/board.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-                if("${saveOk}" == true){
-                    location.href = "/work/main";
-                }
-                if("${deleteOk}" == true){
-                    location.href = "/work/main";
-                }
+
             });
         </script>
     </head>

@@ -115,22 +115,13 @@
                     </div>
                 </div>
                 <div class="board-write-wrap">
-                    <div class="btn-wrap">
-                        <%--<form name="delNotification" id="delNotification" method="post" action="/work/delete">
-                            <input type="text" id="id" name="id" hidden="hidden" value="<c:out value="${detailDto.id}"/>"/>
-                            <input type="text" name="title" hidden="hidden" value="<c:out value="${detailDto.title}"/>"/>
-                            <input type="text" name="name" hidden="hidden" value="<c:out value="${detailDto.name}"/>"/>
-                            <input type="text" name="password" hidden="hidden" value="<c:out value="${detailDto.password}"/>"/>
-                            <input type="text" name="contents" hidden="hidden" value="<c:out value="${detailDto.contents}"/>"/>
-                            <button type="button" id="delete" style="background: #777777">삭제</button>
-                        </form>--%>
-                    </div>
                     <form id="updateNotification" method="post" action="/work/update">
                         <div class="board-write">
                             <div class="title">
                                 <dl>
                                     <dt>제목</dt>
                                     <dd>
+                                        <input type="text" id="id" name="id" hidden="hidden" value="<c:out value="${detailDto.id}"/>"/>
                                         <input type="text" maxlength="20" name="title" id="title" value="<c:out value="${detailDto.title}"/>"/>
                                         <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
                                     </dd>
@@ -164,7 +155,7 @@
                                 </dl>
                             </div>
                             <div class="cont">
-                                <textarea><c:out value="${detailDto.contents}"/></textarea>
+                                <textarea id="contents" name="contents"><c:out value="${detailDto.contents}"/></textarea>
                             </div>
                         </div>
                         <div class="btn-wrap">
