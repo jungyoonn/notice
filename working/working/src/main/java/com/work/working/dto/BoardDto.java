@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.work.working.common.BoardType;
 import com.work.working.entity.Board;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -21,14 +22,17 @@ public class BoardDto {
     protected static class Base {
         protected long id;
 
+        @NotBlank(message = "이름은 필수 입력입니다.")
         protected String title;
 
         protected String contents;
 
         protected BoardType type;
 
+        @NotBlank(message = "이름은 필수 입력입니다.")
         protected String name;
 
+        @NotBlank(message = "이름은 필수 입력입니다.")
         protected String password;
 
         protected long count;

@@ -37,7 +37,7 @@
                 <div class="board-wrap">
                     <div class="board-title">
                         <strong>공지사항</strong>
-                        <p>기타 설명란</p>
+                        <p>기존 공지사항 수정 및 삭제</p>
                     </div>
                 </div>
                 <div class="board-write-wrap">

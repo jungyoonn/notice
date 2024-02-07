@@ -15,6 +15,12 @@ public class RestBoardController {
     @Autowired
     BoardService boardService;
 
+    @PostMapping("/save")
+    @ResponseBody
+    public long save(@RequestBody @Valid BoardDto.Create create) {
+        return boardService.save(create);
+    }
+
     @PostMapping("/update")
     @ResponseBody
     public SuccessCode update(@RequestBody @Valid BoardDto.Update update) throws Exception{

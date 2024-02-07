@@ -71,11 +71,4 @@ public class BoardController {
 
         return "board/edit";
     }
-
-    @RequestMapping(value = "save")
-    public String saveIndex(@Valid BoardDto.Create create, Model model){
-        boardService.save(create);
-        model.addAttribute("saveOk", true);
-        return "board/main";
-    }
 }

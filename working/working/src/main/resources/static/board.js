@@ -32,6 +32,98 @@ export class Board extends App {
         return new Board();
     }
 
+    create(e, id){
+        let title = document.getElementById("title").value;
+        let name = document.getElementById("name").value;
+        let password = document.getElementById("password").value;
+
+        let requiredAlertTitle = document.querySelector('#title + .required-alert');
+        let requiredAlertName = document.querySelector('#name + .required-alert');
+        let requiredAlertPassword = document.querySelector('#password + .required-alert');
+
+        if(title == "" && name == "" && password == "") {
+            requiredAlertTitle.style.display = 'block';
+            requiredAlertName.style.display = 'block';
+            requiredAlertPassword.style.display = 'block';
+            return;
+        } else {
+            requiredAlertTitle.style.display = 'none';
+            requiredAlertName.style.display = 'none';
+            requiredAlertPassword.style.display = 'none';
+        }
+
+        if (title == "" && name == "") {
+            requiredAlertTitle.style.display = 'block';
+            requiredAlertName.style.display = 'block';
+            return;
+        } else {
+           requiredAlertTitle.style.display = 'none';
+            requiredAlertName.style.display = 'none';
+        }
+
+        if(title == "" && password == "") {
+            requiredAlertTitle.style.display = 'block';
+            requiredAlertPassword.style.display = 'block';
+            return;
+        } else {
+            requiredAlertTitle.style.display = 'none';
+            requiredAlertPassword.style.display = 'none';
+        }
+
+        if(name == "" && password == ""){
+            requiredAlertName.style.display = 'block';
+            requiredAlertPassword.style.display = 'block';
+            return;
+        } else {
+            requiredAlertName.style.display = 'none';
+            requiredAlertPassword.style.display = 'none';
+        }
+
+        if(title == ""){
+            requiredAlertTitle.style.display = "block";
+            return;
+        } else {
+            requiredAlertTitle.style.display = "none";
+        }
+
+        if(name == ""){
+            requiredAlertName.style.display = 'block';
+            return;
+        } else {
+            requiredAlertName.style.display = 'none';
+        }
+
+        if(password == ""){
+            requiredAlertPassword.style.display = 'block';
+            return;
+        } else {
+            requiredAlertPassword.style.display = 'none';
+        }
+
+        Message.confirm("등록하시겠습니까?")
+            .then(() => {
+                let data = BoardData.of(id, e.target.parentElement.parentElement);
+                fetch("/board/save", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data),
+                }).then((response) =>{
+                    if(!response.ok){
+                        throw response.json();
+                    }
+                    return response.json()
+                })
+                    .then(() => Message.alert("등록되었습니다."))
+                    .then(() => location.href="/board/main")
+                    .catch((error) => {
+                        console.log(error);
+                        //error.then(e => Message.alert(Object.values(e.errors)));
+                    });
+            })
+    }
+
     update(e, id) {
         let title = document.getElementById("title").value;
         let name = document.getElementById("name").value;
