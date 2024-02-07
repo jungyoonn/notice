@@ -11,23 +11,7 @@
         <script type="module" src="resources/resource/board.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-                document.querySelector('input[type="text"]').addEventListener('oninput', function (){
-                    const inputElementName = document.getElementById('name');
-                    const inputValueName = inputElementName.value;
 
-                    const inputElementTitle = document.getElementById('title');
-                    const inputValueTitle = inputElementTitle.value;
-
-                    if(inputValueTitle.length > 20) {
-                        inputElementTitle.value = inputValueTitle.substring(0, 20);
-                        alert('제목은 20자리를 넘길 수 없습니다.');
-                    }
-
-                    if (inputValueName.length > 10) {
-                        inputElementName.value = inputValueName.substring(0, 10);
-                        alert('이름은 10자리를 넘길수 없습니다.');
-                    }
-                });
             });
         </script>
     </head>
@@ -36,20 +20,21 @@
             <div class="container">
                 <div class="board-wrap">
                     <div class="board-title">
-                        <strong>공지사항</strong>
+                        <a href="/board/main"><strong>공지사항</strong></a>
                         <p>기존 공지사항 수정 및 삭제</p>
                     </div>
                 </div>
                 <div class="board-write-wrap">
-                    <form id="updateNotification" method="post" action="/board/update">
+                    <form id="updateNotification" method="post" oninput="boardApp.maxLength()" action="/board/update">
                         <div class="board-write">
                             <div class="title">
                                 <dl>
                                     <dt>제목</dt>
                                     <dd>
-                                        <input type="text" id="id" name="id" hidden="hidden" value="<c:out value="${detailDto.id}"/>"/>
-                                        <input type="text" maxlength="20" name="title" id="title" value="<c:out value="${detailDto.title}"/>"/>
+                                        <input type="text" id="id" maxlength="20" name="id" hidden="hidden" value="<c:out value="${detailDto.id}"/>"/>
+                                        <input type="text" name="title" id="title" value="<c:out value="${detailDto.title}"/>"/>
                                         <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
+                                        <p class="title-max-alert" style="margin: 0; color: red; display: none;">제목은 20자를 넘을 수 없습니다.</p>
                                     </dd>
                                 </dl>
                                 <dl>
@@ -69,6 +54,7 @@
                                     <dd>
                                         <input type="text" maxlength="10" name="name" id="name" value="<c:out value="${detailDto.name}"/>"/>
                                         <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
+                                        <p class="name-max-alert" style="margin: 0; color: red; display: none;">이름은 10자를 넘을 수 없습니다.</p>
                                     </dd>
                                 </dl>
                                 <dl>

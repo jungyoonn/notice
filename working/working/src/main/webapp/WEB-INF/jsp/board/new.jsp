@@ -14,24 +14,6 @@
             document.addEventListener("DOMContentLoaded", () => {
 
             });
-
-            function maxLength(){
-                const inputElementName = document.getElementById('name');
-                const inputValueName = inputElementName.value;
-
-                const inputElementTitle = document.getElementById('title');
-                const inputValueTitle = inputElementTitle.value;
-
-                if(inputValueTitle.length > 20) {
-                    inputElementTitle.value = inputValueTitle.substring(0, 20);
-                    alert('제목은 20자리를 넘길 수 없습니다.');
-                }
-
-                if (inputValueName.length > 10) {
-                    inputElementName.value = inputValueName.substring(0, 10);
-                    alert('이름은 10자리를 넘길수 없습니다.');
-                }
-            }
         </script>
     </head>
     <body>
@@ -39,12 +21,12 @@
         <div class="container">
             <div class="board-wrap">
                 <div class="board-title">
-                    <strong>공지사항</strong>
+                    <a href="/board/main"><strong>공지사항</strong></a>
                     <p>공지사항 신규 등록</p>
                 </div>
             </div>
             <div class="board-write-wrap">
-                <form id="newNotification" name="newNotification" method="post" oninput="maxLength()" action="/board/save">
+                <form id="newNotification" name="newNotification" method="post" oninput="boardApp.maxLength()" action="/board/save">
                     <div class="board-write">
                         <div class="title">
                             <dl>
@@ -52,6 +34,7 @@
                                 <dd>
                                     <input type="text" name="title" id="title" maxlength="20" placeholder="제목을 입력해 주세요"/>
                                     <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
+                                    <p class="title-max-alert" style="margin: 0; color: red; display: none;">제목은 20자를 넘을 수 없습니다.</p>
                                 </dd>
                             </dl>
                             <dl>
@@ -71,6 +54,7 @@
                                 <dd>
                                     <input type="text" name="name" id="name" maxlength="10" placeholder="작성자"/>
                                     <p class="required-alert" style="margin: 0; color: red; display: none;">필수입력입니다.</p>
+                                    <p class="name-max-alert" style="margin: 0; color: red; display: none;">이름은 10자를 넘을 수 없습니다.</p>
                                 </dd>
                             </dl>
                             <dl>

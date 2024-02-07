@@ -16,14 +16,11 @@
         </script>
     </head>
     <body>
-    <%--<div class="page-inner background" style="background-image: url('/resources/img/bg_01.png'); height: 20rem;">
-        <img src="/resources/static/bg_01.png" style="text-align: center; height: 15rem;" alt=""/>
-    </div>--%>
         <div class="section">
             <div class="container">
                 <div class="board-wrap">
                     <div class="board-title">
-                        <strong>공지사항</strong>
+                        <a href="/board/main"><strong>공지사항</strong></a>
                         <form class="searchForm" name="searchForm" method="get" action="/board/main">
                             <select name="type" id="type" onchange="this.form.submit()">
                                 <option value="">전체</option>

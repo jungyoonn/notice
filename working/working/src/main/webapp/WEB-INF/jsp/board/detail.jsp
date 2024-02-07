@@ -33,7 +33,7 @@
     <div class="container">
         <div class="board-wrap">
             <div class="board-title">
-                <strong>공지사항</strong>
+                <a href="/board/main"><strong>공지사항</strong></a>
                 <p>상세 조회 페이지</p>
             </div>
         </div>
