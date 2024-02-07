@@ -26,8 +26,6 @@ public class BoardService {
         } else {
             result = boardRepository.findAll(pageable);
         }
-
-        log.debug("result => {}", result.hasContent());
         return result.map(data -> data.toSearchResultDto());
     }
 

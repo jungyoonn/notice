@@ -10,25 +10,9 @@
         <link rel="stylesheet" type="text/css" href="resources/resource/css.css">
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
         <script type="module" src="resources/resource/board.js"></script>
-        <script type="module">
+        <script>
             document.addEventListener("DOMContentLoaded", () => {
-                /*document.querySelector('input[type="text"]').addEventListener('oninput', function (){
-                    const inputElementName = document.getElementById('name');
-                    const inputValueName = inputElementName.value;
 
-                    const inputElementTitle = document.getElementById('title');
-                    const inputValueTitle = inputElementTitle.value;
-
-                    if(inputValueTitle.length > 20) {
-                        inputElementTitle.value = inputValueTitle.substring(0, 20);
-                        alert('제목은 20자리를 넘길 수 없습니다.');
-                    }
-
-                    if (inputValueName.length > 10) {
-                        inputElementName.value = inputValueName.substring(0, 10);
-                        alert('이름은 10자리를 넘길수 없습니다.');
-                    }
-                });*/
             });
 
             function maxLength(){
@@ -102,7 +86,7 @@
                         </div>
                     </div>
                     <div class="btn-wrap">
-                        <button type="button" id="submit" onclick="boardApp.create(event, 0)" class="btn-on">등록</button>
+                        <button type="button" onclick="boardApp.create(event, 0)" class="btn-on">등록</button>
                         <a href="/board/main">취소</a>
                     </div>
                 </form>

@@ -58,6 +58,20 @@ public class BoardController {
         return "board/new";
     }
 
+    @RequestMapping("edit")
+    public String editIndex(long id, Model model) throws BoardException.NotFound {
+        List<BoardDto.Types> boardTypeList = Stream.of(BoardType.values()).map(d -> BoardDto.Types.builder()
+                .name(d.getName())
+                .val(d.toString())
+                .build()).collect(Collectors.toList());
+        model.addAttribute("boardTypeList", boardTypeList);
+
+        BoardDto.Detail detail = boardService.findDetail(id);
+        model.addAttribute("detailDto", detail);
+
+        return "board/edit";
+    }
+
     @RequestMapping(value = "detail")
     public String detailIndex(long id, Model model) throws BoardException.NotFound {
         List<BoardDto.Types> boardTypeList = Stream.of(BoardType.values()).map(d -> BoardDto.Types.builder()
@@ -69,6 +83,6 @@ public class BoardController {
         BoardDto.Detail detail = boardService.findDetail(id);
         model.addAttribute("detailDto", detail);
 
-        return "board/edit";
+        return "board/detail";
     }
 }

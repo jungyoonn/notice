@@ -288,6 +288,8 @@ a {
 
 .board-write .cont {
     border-bottom: 1px solid #000;
+    height: 300px;
+    font-size: 1.4rem;
 }
 
 .board-write .cont textarea {

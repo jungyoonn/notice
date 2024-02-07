@@ -85,9 +85,9 @@
                             </div>
                         </div>
                         <div class="btn-wrap">
-                            <button type="button" id="update" onclick="boardApp.update(event, ${detailDto.id})" class="btn-on">수정</button>
-                            <a href="/board/main">취소</a>
-                            <button type="button" id="delete" onclick="boardApp.delete(event, ${detailDto.id})" style="background: #777777">삭제</button>
+                            <button type="button" onclick="boardApp.update(event, ${detailDto.id})" class="btn-on">수정</button>
+                            <a href="/board/detail?id=${detailDto.id}">취소</a>
+                            <button type="button" onclick="boardApp.delete(event, ${detailDto.id})" style="background: #777777">삭제</button>
                         </div>
                     </form>
                 </div>
