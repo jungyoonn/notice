@@ -32,6 +32,32 @@ export class Board extends App {
         return new Board();
     }
 
+    maxLength(){
+        const inputElementName = document.getElementById('name');
+        const inputValueName = inputElementName.value;
+
+        const inputElementTitle = document.getElementById('title');
+        const inputValueTitle = inputElementTitle.value;
+
+        if(inputValueTitle.length > 19) {
+            inputElementTitle.value = inputValueTitle.substring(0, 19);
+            let maxAlertTitle = document.querySelector('.title-max-alert');
+            maxAlertTitle.style.display = 'block';
+        } else {
+            let maxAlertTitle = document.querySelector('.title-max-alert');
+            maxAlertTitle.style.display = 'none';
+        }
+
+        if (inputValueName.length > 9) {
+            inputElementName.value = inputValueName.substring(0, 9);
+            let maxAlertName = document.querySelector('.name-max-alert');
+            maxAlertName.style.display = 'block';
+        } else {
+            let maxAlertName = document.querySelector('.name-max-alert');
+            maxAlertName.style.display = 'none';
+        }
+    }
+
     create(e, id){
         let title = document.getElementById("title").value;
         let name = document.getElementById("name").value;
@@ -57,7 +83,7 @@ export class Board extends App {
             requiredAlertName.style.display = 'block';
             return;
         } else {
-            requiredAlertTitle.style.display = 'none';
+           requiredAlertTitle.style.display = 'none';
             requiredAlertName.style.display = 'none';
         }
 
@@ -116,11 +142,11 @@ export class Board extends App {
                     return response.json()
                 })
                     .then(() => Message.alert("등록되었습니다."))
-                    .then(() => location.href="/board/main")
                     .catch((error) => {
                         console.log(error);
                         //error.then(e => Message.alert(Object.values(e.errors)));
-                    });
+                    })
+                    .then(() => location.href="/board/main");
             })
     }
 
@@ -205,33 +231,32 @@ export class Board extends App {
         }
 
         Message.confirm("수정하시겠습니까?")
-            .then(() => {
-                let data = BoardData.of(id, e.target.parentElement.parentElement);
-                fetch("/board/update", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data),
-                })
-                    .then((response) =>{
-                        if(!response.ok){
-                            throw response.json();
-                        }
-                        return response.json()
-                    })
-                    .then(() => Message.alert("수정되었습니다."))
-                    .then(() => location.href="/board/main")
-                    .catch((error) => {
-                        console.log(error);
-                        //error.then(e => Message.alert(Object.values(e.errors)));
-                    });
-                /*;(async () => {
-                    throw new Error('error')
-                })().catch((error) => {
-                    console.log(error)
-                });*/
+        .then(() => {
+            let data = BoardData.of(id, e.target.parentElement.parentElement);
+            fetch("/board/update", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data),
             })
+             .then((response) =>{
+                    if(!response.ok){
+                        throw response.json();
+                    }
+                    return response.json()
+             })
+            .then(() => Message.alert("수정되었습니다."))
+            .catch((error) => {
+                console.log(error);
+                //error.then(e => Message.alert(Object.values(e.errors)));
+            }).then(() => location.href="/board/main");
+            /*;(async () => {
+                throw new Error('error')
+            })().catch((error) => {
+                console.log(error)
+            });*/
+        })
     }
 
     delete(e, id) {
@@ -249,7 +274,7 @@ export class Board extends App {
 
         Message.confirm("삭제하시겠습니까?")
             .then(() =>
-                fetch(`/board/delete?id=${id}`))
+            fetch(`/board/delete?id=${id}`))
             .then((response) => {
                 if(!response.ok){
                     throw response.json();
@@ -257,11 +282,10 @@ export class Board extends App {
                 return response.json()
             })
             .then(() => Message.alert("삭제되었습니다."))
-            .then(() => location.href="/board/main")
             .catch((error) => {
                 //error.then(e => Message.alert(Object.values(e.errors)))
                 console.log(error)
-            });
+            }).then(() => location.href="/board/main");
     }
 }
 

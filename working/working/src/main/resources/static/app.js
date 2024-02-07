@@ -224,4 +224,25 @@ export class Message extends Crypto{
             document.body.style.overflow = 'hidden';
         });
     }
+    static maxLengthAlert(message){
+        let div = document.createElement("div");
+        div.innerHTML =
+            `
+                <div id="popupContainer" class="popup-container">
+                    <div class="popup">
+                        <span id="closePopup" onClick="${this.refFunc(this.close)}" class="close-btn">×</span>
+                        <p>${message}</p>
+                        <div class="btn-wrap">
+                            <button onClick="${this.refFunc(this.close)}" class="btn-on">확인</button>
+                        </div>
+                    </div>
+                </div>
+            `
+
+        div.classList.add("_message");
+        div.style.display = 'flex';
+        div.style.zIndex = 2000;
+        document.body.appendChild(div);
+        document.body.style.overflow = 'hidden';
+    }
 }
