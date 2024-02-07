@@ -115,7 +115,7 @@ export class Board extends App {
         Message.confirm("수정하시겠습니까?")
         .then(() => {
             let data = BoardData.of(id, e.target.parentElement.parentElement);
-            fetch("/work/update", {
+            fetch("/board/update", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -129,16 +129,16 @@ export class Board extends App {
                     return response.json()
              })
             .then(() => Message.alert("수정되었습니다."))
-            .then(() => goPage())
-            /*.catch((error) => {
+            .then(() => location.href="/board/main")
+            .catch((error) => {
                 console.log(error);
-                error.then(e => Message.alert(Object.values(e.errors)));
-            });*/
-            ;(async () => {
+                //error.then(e => Message.alert(Object.values(e.errors)));
+            });
+            /*;(async () => {
                 throw new Error('error')
             })().catch((error) => {
                 console.log(error)
-            });
+            });*/
         })
     }
 
@@ -157,7 +157,7 @@ export class Board extends App {
 
         Message.confirm("삭제하시겠습니까?")
             .then(() =>
-            fetch(`/work/delete?id=${id}`))
+            fetch(`/board/delete?id=${id}`))
             .then((response) => {
                 if(!response.ok){
                     throw response.json();
@@ -165,7 +165,7 @@ export class Board extends App {
                 return response.json()
             })
             .then(() => Message.alert("삭제되었습니다."))
-            .then(() => goPage(0))
+            .then(() => location.href="/board/main")
             .catch((error) => {
                 //error.then(e => Message.alert(Object.values(e.errors)))
                 console.log(error)

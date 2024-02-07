@@ -10,17 +10,7 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
         <script type="module" src="resources/resource/board.js"></script>
         <script>
-            let submitEvent = "";
-
             document.addEventListener("DOMContentLoaded", () => {
-                /*if("${updateOk}" == true){
-                    confirmPopup("수정되었습니다.");
-                    location.href = "/work/main";
-                }
-                if("${deleteOk}" == true){
-                    location.href = "/work/main";
-                }*/
-
                 document.querySelector('input[type="text"]').addEventListener('oninput', function (){
                     const inputElementName = document.getElementById('name');
                     const inputValueName = inputElementName.value;
@@ -39,70 +29,6 @@
                     }
                 });
             });
-
-            function closePopup(){
-                document.getElementById("popupContainer").style.display = 'none';
-            }
-
-            function showPopup(message){
-                let div = document.createElement("div");
-                div.innerHTML = `
-                <div id="popupContainer" class="popup-container">
-                    <div class="popup">
-                        <span id="closePopup" onclick="closePopup()" class="close-btn">×</span>
-                        <p>`
-                         + message +
-                    `</p>
-                            <div class="btn-wrap">
-                                <button type="button" id="popupSubmit" onClick="updateOrDelete()" class="btn-on">확인</button>
-                                <button onclick="closePopup()">취소</button>
-                            </div>
-                        </div>
-                </div>
-                `
-                div.style.display = 'flex';
-                div.style.zIndex = 2000;
-                document.body.appendChild(div);
-                document.body.style.overflow = 'hidden';
-                document.getElementById("popupContainer").style.display = 'block';
-            }
-
-            function confirmPopup(message){
-                let div = document.createElement("div");
-                div.innerHTML = `
-                <div id="popupContainer" class="popup-container">
-                    <div class="popup">
-                        <span id="closePopup" onclick="closePopup()" class="close-btn">×</span>
-                        <p>`
-                    + message +
-                    `</p>
-                            <div class="btn-wrap">
-                                <a href="/work/main"><button type="button" class="btn-on">확인</button></a>
-                                <button onclick="closePopup()">취소</button>
-                            </div>
-                        </div>
-                </div>
-                `
-                div.style.display = 'flex';
-                div.style.zIndex = 2000;
-                document.body.appendChild(div);
-                document.body.style.overflow = 'hidden';
-                document.getElementById("popupContainer").style.display = 'block';
-            }
-
-            /*window.onload=function(){}
-            function updateOrDelete(){
-                if(submitEvent == "delete"){
-                    const delForm = document.getElementById("delNotification");
-                    console.log(delForm);
-                    delForm.submit();
-                } else if(submitEvent == "update"){
-                    const form = document.getElementById("updateNotification");
-                    form.submit();
-                } else if(submitEvent == "fail"){
-                    history.reload();
-                }
-            }*/
         </script>
     </head>
     <body>
@@ -115,7 +41,7 @@
                     </div>
                 </div>
                 <div class="board-write-wrap">
-                    <form id="updateNotification" method="post" action="/work/update">
+                    <form id="updateNotification" method="post" action="/board/update">
                         <div class="board-write">
                             <div class="title">
                                 <dl>
@@ -160,7 +86,7 @@
                         </div>
                         <div class="btn-wrap">
                             <button type="button" id="update" onclick="boardApp.update(event, ${detailDto.id})" class="btn-on">수정</button>
-                            <a href="/work/main">취소</a>
+                            <a href="/board/main">취소</a>
                             <button type="button" id="delete" onclick="boardApp.delete(event, ${detailDto.id})" style="background: #777777">삭제</button>
                         </div>
                     </form>

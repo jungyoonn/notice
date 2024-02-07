@@ -24,7 +24,7 @@
                 <div class="board-wrap">
                     <div class="board-title">
                         <strong>공지사항</strong>
-                        <form class="searchForm" name="searchForm" method="get" action="/work/main">
+                        <form class="searchForm" name="searchForm" method="get" action="/board/main">
                             <select name="type" id="type" onchange="this.form.submit()">
                                 <option value="">전체</option>
                                 <c:forEach var="boardTypes" items="${boardTypeList}" varStatus="status">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="board-list-wrap">
-                    <form id="searchForm" name="searchForm" method="get" action="/work/main">
+                    <form id="searchForm" name="searchForm" method="get" action="/board/main">
                         <input type="hidden" id="page" name="page" value="0" onchange="this.form.submit()"/>
                     </form>
                     <div class="board-list">
@@ -51,7 +51,7 @@
                             <div>
                                 <div class="num"><c:out value="${page.totalElements - (page.size * page.number) - status.index}"/></div>
                                 <div class="types"><c:out value="${data.type.name}"/></div>
-                                <div class="title"><a href="/work/detail?id=${data.id}"><c:out value="${data.title}"/></a></div>
+                                <div class="title"><a href="/board/detail?id=${data.id}"><c:out value="${data.title}"/></a></div>
                                 <div class="name"><c:out value="${data.name}"/></div>
                                 <div class="date">
                                     <fmt:parseDate value="${data.createdDate}" var="data_createdDate" pattern="yyyy-MM-dd'T'HH:mm" />
@@ -65,8 +65,8 @@
                         <%@include file="/WEB-INF/jsp/include/paging.jsp"%>
                     </div>
                     <div class="btn-wrap">
-                        <a href="/work/main" class="on">목록</a>
-                        <a href="/work/new">등록</a>
+                        <a href="/board/main" class="on">목록</a>
+                        <a href="/board/new">등록</a>
                     </div>
                 </div>
             </div>

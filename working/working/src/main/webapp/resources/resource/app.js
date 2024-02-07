@@ -9,7 +9,7 @@ export class Crypto{
 export class _Event extends Crypto {
     constructor(){
         super();
-       document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
             this.event();
         });
     }
@@ -154,7 +154,7 @@ export class Message extends Crypto{
         return Message.of()._alert(message);
     }
 
-    _alert(title, message){
+    _alert(message){
         return new Promise((resolve, reject) => {
             this.resolve = resolve;
             this.reject = reject;
@@ -166,8 +166,8 @@ export class Message extends Crypto{
                         <span id="closePopup" onclick=${this.refFunc(this.cancel)} class="close-btn">×</span>
                         <p>${message.map(d => (d + '<br>')).join('')}</p>
                         <div class="btn-wrap">
-                            <button onclick=${this.refFunc(this.cancel)} class="btn-on">확인</button>
-                            <button onclick=${this.refFunc(this.cancel)}>취소</button>
+                            <button onclick=${this.refFunc(this.ok)} class="btn-on">확인</button>
+                            <button onclick=${this.refFunc(this.cancel)}>닫기</button>
                         </div>
                     </div>
                 </div>
@@ -198,7 +198,7 @@ export class Message extends Crypto{
         return Message.of()._confirm(message);
     }
 
-    _confirm(title, message){
+    _confirm(message){
         return new Promise((resolve, reject) => {
             this.resolve = resolve;
             this.reject = reject;
@@ -210,7 +210,7 @@ export class Message extends Crypto{
                         <span id="closePopup" onclick=${this.refFunc(this.cancel)} class="close-btn">×</span>
                         <p>${message}</p>
                         <div class="btn-wrap">
-                            <button type="submit" class="btn-on">확인</button>
+                            <button onclick=${this.refFunc(this.ok)} class="btn-on">확인</button>
                             <button onclick=${this.refFunc(this.cancel)}>취소</button>
                         </div>
                     </div>

@@ -135,7 +135,7 @@
                 </div>
             </div>
             <div class="board-write-wrap">
-                <form id="newNotification" name="newNotification" method="post" action="/work/save">
+                <form id="newNotification" name="newNotification" method="post" action="/board/save">
                     <div class="board-write">
                         <div class="title">
                             <dl>
@@ -178,7 +178,7 @@
                     </div>
                     <div class="btn-wrap">
                         <button type="button" id="submit" class="btn-on">등록</button>
-                        <a href="/work/main">취소</a>
+                        <a href="/board/main">취소</a>
                     </div>
                     <div id="popupContainer" class="popup-container">
                         <div class="popup">
